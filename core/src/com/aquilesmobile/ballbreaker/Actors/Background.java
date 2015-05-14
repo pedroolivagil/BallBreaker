@@ -19,7 +19,7 @@ public class Background extends Actor {
     @Override
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
-        batch.draw(GameLogic.getBackground2(), 0, 0);
+        batch.draw(GameLogic.getBackground1(), 0, 0, GameLogic.getScreenWidth(), GameLogic.getScreenHeight());
     }
 
     @Override

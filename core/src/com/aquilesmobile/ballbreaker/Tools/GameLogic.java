@@ -43,6 +43,7 @@ public abstract class GameLogic implements Disposable {
     private static Texture bg1;
     private static Texture bg2;
     private static Texture bg3;
+    private static Texture button;
 
     /**
      * Sounds *
@@ -58,6 +59,11 @@ public abstract class GameLogic implements Disposable {
         bg1 = new Texture("ui/bg/Background01.png");
         bg2 = new Texture("ui/bg/Background02.png");
         bg3 = new Texture("ui/bg/Background03.png");
+        button = new Texture("ui/button.png");
+    }
+
+    public static float resizeImg(float anchoOriginal, float altoOriginal, float anchoDeseado) {
+        return (anchoDeseado * altoOriginal) / anchoOriginal;
     }
 
     /**
@@ -156,21 +162,23 @@ public abstract class GameLogic implements Disposable {
     }
 
     public static TextureRegion getImgTitulo() {
-        return new TextureRegion(titulo, 0, 0, 1094, 503);
+        return new TextureRegion(titulo, 0, 0, 903, 517);
     }
 
     public static TextureRegion getBackground1() {
-        return new TextureRegion(bg1, 0, 0, getScreenWidth(), getScreenHeight());
-    }
-    public static TextureRegion getBackground2() {
-        return new TextureRegion(bg2, 0, 0, getScreenWidth(), getScreenHeight());
-    }
-    public static TextureRegion getBackground3() {
-        return new TextureRegion(bg3, 0, 0, getScreenWidth(), getScreenHeight());
+        return new TextureRegion(bg1, 0, 0, bg1.getWidth(), bg1.getHeight());
     }
 
-    public static float resizeImg(float anchoOriginal, float altoOriginal, float anchoDeseado) {
-        return (anchoDeseado * altoOriginal) / anchoOriginal;
+    public static TextureRegion getBackground2() {
+        return new TextureRegion(bg2, 0, 0, bg2.getWidth(), bg2.getHeight());
+    }
+
+    public static TextureRegion getBackground3() {
+        return new TextureRegion(bg3, 0, 0, bg3.getWidth(), bg3.getHeight());
+    }
+
+    public static TextureRegion getImgButton() {
+        return new TextureRegion(button, 0, 0, 664, 214);
     }
 
     @Override
