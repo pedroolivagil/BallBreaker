@@ -21,18 +21,13 @@ public class SplashScreen extends GeneralScreen {
     public void show() {
         super.show();
         load();
-        Image logo = new Image(getSplash());
-
-        _stage.addActor(logo);
-
+        _stage.addActor(new Image(getSplash()));
         Timer.schedule(new Timer.Task() {
             @Override
             public void run() {
                 game.setScreen(game._mainMenuScreen);
             }
         }, 3.5f);
-
-
     }
 
     @Override
