@@ -32,7 +32,7 @@ public class MainMenuScreen extends GeneralScreen {
 
         Button btnStart = new Button(game.getString().format("lStart"));
         btnStart.setPosition(
-                0,
+                0 - btnStart.getWidth() / 2,
                 500
         );
         btnStart.setColor(Color.MAGENTA);
