@@ -5,6 +5,8 @@ import com.aquilesmobile.ballbreaker.Tools.GeneralScreen;
 
 /**
  * Created by Oliva on 12/05/2015.
+ *
+ * pantalla de opciones
  */
 public class PreferenceScreen extends GeneralScreen {
 

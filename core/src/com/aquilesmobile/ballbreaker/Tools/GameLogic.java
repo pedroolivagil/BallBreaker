@@ -8,6 +8,8 @@ import com.badlogic.gdx.utils.Disposable;
 
 /**
  * Created by Oliva on 15/04/2015.
+ *
+ * Clase que contiene la logica y las texturas del juego
  */
 public abstract class GameLogic implements Disposable {
     /**
@@ -178,7 +180,7 @@ public abstract class GameLogic implements Disposable {
     }
 
     public static TextureRegion getImgButton() {
-        return new TextureRegion(button, 0, 0, 664, 214);
+        return new TextureRegion(button, 0, 0, 474, 194);
     }
 
     @Override

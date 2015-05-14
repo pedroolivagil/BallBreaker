@@ -38,7 +38,7 @@ public class Button extends Group {
         iButton.setOrigin(iButton.getWidth() / 2, iButton.getHeight() / 2);
         lbText.setOrigin(lbText.getWidth() / 2, lbText.getHeight() / 2);
 
-        iButton.setScale(.6f);
+        iButton.setScale(1f);
         iButton.setPosition(this.getX(), this.getY());
 
         lbText.setPosition(

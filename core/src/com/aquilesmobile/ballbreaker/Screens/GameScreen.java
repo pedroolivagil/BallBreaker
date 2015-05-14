@@ -5,6 +5,8 @@ import com.aquilesmobile.ballbreaker.Tools.GeneralScreen;
 
 /**
  * Created by OlivaDevelop on 12/05/2015.
+ *
+ * Pantalla de juego
  */
 public class GameScreen extends GeneralScreen {
 

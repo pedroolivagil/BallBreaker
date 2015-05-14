@@ -10,6 +10,8 @@ import static com.aquilesmobile.ballbreaker.Tools.GameLogic.load;
 
 /**
  * Created by Oliva on 12/05/2015.
+ *
+ * Pantalla Splash
  */
 public class SplashScreen extends GeneralScreen {
 

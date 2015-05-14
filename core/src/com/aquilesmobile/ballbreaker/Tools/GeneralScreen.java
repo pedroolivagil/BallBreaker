@@ -15,6 +15,8 @@ import static com.aquilesmobile.ballbreaker.Tools.GameLogic.getScreenWidth;
 
 /**
  * Created by Oliva on 12/05/2015.
+ *
+ * Clase general que implementa Screen
  */
 public class GeneralScreen implements Screen {
 

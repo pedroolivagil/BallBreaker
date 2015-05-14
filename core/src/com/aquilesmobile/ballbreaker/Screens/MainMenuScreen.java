@@ -10,6 +10,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
 /**
  * Created by Oliva on 12/05/2015.
+ *
+ * pantalla de menu principal
  */
 public class MainMenuScreen extends GeneralScreen {
 
