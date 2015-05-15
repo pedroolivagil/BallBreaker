@@ -2,6 +2,7 @@ package com.aquilesmobile.ballbreaker.Actors;
 
 import com.aquilesmobile.ballbreaker.Tools.GameLogic;
 import com.aquilesmobile.ballbreaker.Tools.GeneralScreen;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
@@ -18,20 +19,18 @@ public class HUD extends Group {
         Image pause = new Image(GameLogic.getImgPause());
         Image form = new Image(GameLogic.getImgForm());
 
-        pause.debug();
-        form.debug();
-
         int ancho = (int) GameLogic.resizeImg(supBar.getWidth(), supBar.getHeight(), GameLogic.getScreenWidth());
-        int proporcion = (int) (ancho / supBar.getHeight());
+        float proporcion = ancho / supBar.getHeight();
 
+        Gdx.app.log("Proporcion", "-----------> " + proporcion);
         supBar.setHeight(ancho);
         supBar.setWidth(GameLogic.getScreenWidth());
 
-        /*pause.setHeight(pause.getHeight() * proporcion);
+        pause.setHeight(pause.getHeight() * proporcion);
         pause.setWidth(pause.getWidth() * proporcion);
 
-        form.setHeight(pause.getHeight() * proporcion);
-        form.setWidth(pause.getWidth() * proporcion);*/
+        form.setHeight(form.getHeight() * proporcion);
+        form.setWidth(form.getWidth() * proporcion);
 
         supBar.setPosition(0, GameLogic.getScreenHeight() - supBar.getHeight());
         pause.setPosition(GameLogic.getScreenWidth() - pause.getWidth(), GameLogic.getScreenHeight() - pause.getHeight());
