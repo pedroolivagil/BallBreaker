@@ -180,7 +180,7 @@ public abstract class GameLogic implements Disposable {
     }
 
     public static TextureRegion getImgButton() {
-        return new TextureRegion(button, 0, 0, 474, 194);
+        return new TextureRegion(button, 0, 0, 474, 154);
     }
 
     @Override

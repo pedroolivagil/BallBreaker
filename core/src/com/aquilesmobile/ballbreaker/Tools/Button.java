@@ -15,6 +15,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 public class Button extends Group {
 
     private Label lbText;
+    Image iButton;
+    private static float width = GameLogic.getImgButton().getRegionWidth();
+    private static float height = GameLogic.getImgButton().getRegionHeight();
 
     /**
      * @param text para el texto del boton
@@ -23,30 +26,41 @@ public class Button extends Group {
         generate(text, GameLogic.getImgButton());
     }
 
-    /**
-     * @param text     para el texto del boton
-     * @param btnImage para cambiar la imagen del boton
-     */
-    public Button(String text, TextureRegion btnImage) {
-        generate(text, btnImage);
+    public static float getStaticWidth() {
+        return Button.width;
+    }
+
+    public static float getStaticHeight() {
+        return Button.height;
+    }
+
+    public void setFontScale(float scale) {
+        lbText.setFontScale(scale);
+        lbText.setWidth(lbText.getWidth() * scale);
+        lbText.setHeight(lbText.getHeight() * scale);
     }
 
     private void generate(String text, TextureRegion img) {
+        iButton = new Image(img);
         lbText = new Label(text, GameLogic.getSkin());
-        Image iButton = new Image(img);
+
+        this.setWidth(iButton.getWidth());
+        this.setHeight(iButton.getHeight());
 
         iButton.setOrigin(iButton.getWidth() / 2, iButton.getHeight() / 2);
         lbText.setOrigin(lbText.getWidth() / 2, lbText.getHeight() / 2);
-
-        iButton.setScale(1f);
         iButton.setPosition(this.getX(), this.getY());
 
-        lbText.setPosition(
-                iButton.getX() + iButton.getOriginX() - lbText.getOriginX(),
-                iButton.getY() + iButton.getOriginY() - lbText.getOriginY()
-        );
-
         addActors(iButton, lbText);
+    }
+
+    @Override
+    public void setPosition(float x, float y) {
+        super.setPosition(x, y);
+        lbText.setPosition(
+                iButton.getX() + iButton.getOriginX() - lbText.getWidth() / 2,
+                iButton.getY() + 20 + iButton.getOriginY() - lbText.getHeight() / 2
+        );
     }
 
     @Override

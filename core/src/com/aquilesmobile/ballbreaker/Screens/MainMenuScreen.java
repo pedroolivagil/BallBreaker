@@ -5,16 +5,19 @@ import com.aquilesmobile.ballbreaker.BallBreakerGame;
 import com.aquilesmobile.ballbreaker.Tools.Button;
 import com.aquilesmobile.ballbreaker.Tools.GameLogic;
 import com.aquilesmobile.ballbreaker.Tools.GeneralScreen;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
 /**
  * Created by Oliva on 12/05/2015.
- *
+ * <p/>
  * pantalla de menu principal
  */
 public class MainMenuScreen extends GeneralScreen {
 
+    Button btnStart;
+    Button btnScore;
+    Button btnOption;
+    Button btnExit;
 
     public MainMenuScreen(BallBreakerGame game) {
         this.game = game;
@@ -32,16 +35,40 @@ public class MainMenuScreen extends GeneralScreen {
                 GameLogic.getScreenHeight() - titulo.getHeight() - 50
         );
 
-        Button btnStart = new Button(game.getString().format("lStart"));
+        float centrar = (GameLogic.getScreenWidth() / 2) - Button.getStaticWidth() / 2;
+        int positionY = 500;
+
+        btnStart = new Button(game.getString().format("lStart"));
         btnStart.setPosition(
-                0 - btnStart.getWidth() / 2,
-                500
+                centrar,
+                positionY
         );
-        btnStart.setColor(Color.MAGENTA);
+
+        btnScore = new Button(game.getString().format("lHighScore"));
+        btnScore.setFontScale(.8f);
+        btnScore.setPosition(
+                centrar,
+                positionY - ((Button.getStaticHeight() * 1) + 10)
+        );
+
+        btnOption = new Button(game.getString().format("lOptions"));
+        btnOption.setPosition(
+                centrar,
+                positionY - ((Button.getStaticHeight() * 2) + 20)
+        );
+
+        btnExit = new Button(game.getString().format("lExit"));
+        btnExit.setPosition(
+                centrar,
+                positionY - ((Button.getStaticHeight() * 3) + 30)
+        );
 
         _stage.addActor(new Background(this));
         _stage.addActor(titulo);
         _stage.addActor(btnStart);
+        _stage.addActor(btnScore);
+        _stage.addActor(btnOption);
+        _stage.addActor(btnExit);
 
         addListeners();
     }
