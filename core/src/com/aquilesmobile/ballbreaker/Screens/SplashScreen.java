@@ -29,7 +29,7 @@ public class SplashScreen extends GeneralScreen {
             public void run() {
                 game.setScreen(game._mainMenuScreen);
             }
-        }, 3.5f);
+        }, 2.6f);
     }
 
     @Override
