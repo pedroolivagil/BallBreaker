@@ -5,6 +5,8 @@ import com.aquilesmobile.ballbreaker.BallBreakerGame;
 import com.aquilesmobile.ballbreaker.Tools.Button;
 import com.aquilesmobile.ballbreaker.Tools.GameLogic;
 import com.aquilesmobile.ballbreaker.Tools.GeneralScreen;
+import com.aquilesmobile.ballbreaker.Tools.Listener;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
 /**
@@ -63,7 +65,7 @@ public class MainMenuScreen extends GeneralScreen {
                 positionY - ((Button.getStaticHeight() * 3) + 30)
         );
 
-        _stage.addActor(new Background(this));
+        _stage.addActor(new Background(this, GameLogic.getBackground1()));
         _stage.addActor(titulo);
         _stage.addActor(btnStart);
         _stage.addActor(btnScore);
@@ -74,6 +76,30 @@ public class MainMenuScreen extends GeneralScreen {
     }
 
     private void addListeners() {
+        btnStart.addListener(new Listener(){
+            @Override
+            public void action() {
+                game.setScreen(game._gameScreen);
+            }
+        });
+        btnScore.addListener(new Listener(){
+            @Override
+            public void action() {
+                game.setScreen(game._scoreScreen);
+            }
+        });
+        btnOption.addListener(new Listener(){
+            @Override
+            public void action() {
+                game.setScreen(game._preferenceScreen);
+            }
+        });
+        btnExit.addListener(new Listener(){
+            @Override
+            public void action() {
+                Gdx.app.exit();
+            }
+        });
     }
 
     @Override
