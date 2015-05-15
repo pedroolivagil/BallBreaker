@@ -20,6 +20,8 @@ import java.util.Locale;
 import static com.aquilesmobile.ballbreaker.Tools.GameLogic.setScreenHeight;
 import static com.aquilesmobile.ballbreaker.Tools.GameLogic.setScreenWidth;
 
+/* Clase principal, el juego*/
+
 public class BallBreakerGame extends Game {
 
     // Screens

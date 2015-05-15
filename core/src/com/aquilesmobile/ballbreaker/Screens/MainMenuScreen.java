@@ -2,29 +2,22 @@ package com.aquilesmobile.ballbreaker.Screens;
 
 import com.aquilesmobile.ballbreaker.Actors.Background;
 import com.aquilesmobile.ballbreaker.BallBreakerGame;
-import com.aquilesmobile.ballbreaker.Tools.Buttons;
+import com.aquilesmobile.ballbreaker.Tools.Button;
+import com.aquilesmobile.ballbreaker.Tools.GameLogic;
 import com.aquilesmobile.ballbreaker.Tools.GeneralScreen;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-
-import static com.aquilesmobile.ballbreaker.Tools.GameLogic.getScreenHeight;
-import static com.aquilesmobile.ballbreaker.Tools.GameLogic.getScreenWidth;
-import static com.aquilesmobile.ballbreaker.Tools.GameLogic.getSkin;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
 /**
  * Created by Oliva on 12/05/2015.
+ * <p/>
+ * pantalla de menu principal
  */
 public class MainMenuScreen extends GeneralScreen {
 
-    private Table tableMenu;
-    //private TextButton bStart;
-    private Buttons bStart;
-    private TextButton bHScore;
-    private TextButton bExit;
-    private TextButton bPreference;
+    Button btnStart;
+    Button btnScore;
+    Button btnOption;
+    Button btnExit;
 
     public MainMenuScreen(BallBreakerGame game) {
         this.game = game;
@@ -34,87 +27,53 @@ public class MainMenuScreen extends GeneralScreen {
     public void show() {
         super.show();
 
-        bStart = new Buttons(this, game.getString().format("lStart"));
-        //bStart = new TextButton(game.getString().format("lStart"), getSkin());
-        bHScore = new TextButton(game.getString().format("lHighScore"), getSkin());
-        bPreference = new TextButton(game.getString().format("lMarket"), getSkin());
-        bExit = new TextButton(game.getString().format("lExit"), getSkin());
+        Image titulo = new Image(GameLogic.getImgTitulo());
+        titulo.setHeight(GameLogic.resizeImg(titulo.getWidth(), titulo.getHeight(), 700));
+        titulo.setWidth(700);
+        titulo.setPosition(
+                GameLogic.getScreenWidth() / 2 - titulo.getWidth() / 2,
+                GameLogic.getScreenHeight() - titulo.getHeight() - 50
+        );
 
+        float centrar = (GameLogic.getScreenWidth() / 2) - Button.getStaticWidth() / 2;
+        int positionY = 500;
 
-        bHScore.pad(10).padLeft(20).padRight(20);
-        bPreference.pad(10).padLeft(20).padRight(20);
-        bExit.pad(10).padLeft(20).padRight(20);
+        btnStart = new Button(game.getString().format("lStart"));
+        btnStart.setPosition(
+                centrar,
+                positionY
+        );
 
+        btnScore = new Button(game.getString().format("lHighScore"));
+        btnScore.setFontScale(.8f);
+        btnScore.setPosition(
+                centrar,
+                positionY - ((Button.getStaticHeight() * 1) + 10)
+        );
 
-        tableMenu = new Table();
-        tableMenu.debug();
-        tableMenu.setFillParent(true);
-        tableMenu.setOrigin(getScreenWidth() / 2, getScreenHeight() / 2);
-        tableMenu.setPosition(0, -getScreenHeight() / 4);
-        // fila 1
-        tableMenu.row();
-        tableMenu.add(bStart).fillX().pad(10);
-        //fila 2
-        tableMenu.row();
-        tableMenu.add(bHScore).fillX().pad(10);
-        //fila 3
-        tableMenu.row();
-        tableMenu.add(bPreference).fillX().pad(10);
-        //fila 4
-        tableMenu.row();
-        tableMenu.add(bExit).fillX().pad(10);
+        btnOption = new Button(game.getString().format("lOptions"));
+        btnOption.setPosition(
+                centrar,
+                positionY - ((Button.getStaticHeight() * 2) + 20)
+        );
+
+        btnExit = new Button(game.getString().format("lExit"));
+        btnExit.setPosition(
+                centrar,
+                positionY - ((Button.getStaticHeight() * 3) + 30)
+        );
 
         _stage.addActor(new Background(this));
-        _stage.addActor(tableMenu);
+        _stage.addActor(titulo);
+        _stage.addActor(btnStart);
+        _stage.addActor(btnScore);
+        _stage.addActor(btnOption);
+        _stage.addActor(btnExit);
 
         addListeners();
     }
 
     private void addListeners() {
-        bStart.addListener(new InputListener() {
-            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                //Se ejecuta cuando se hace click sobre el actor.
-                return true;
-            }
-
-            public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                //Se ejecuta cuando se levanta el dedo del actor, se ejecuta solo cuando el touchDown es true.
-                game.setScreen(game._gameScreen);
-            }
-        });
-        bHScore.addListener(new InputListener() {
-            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                //Se ejecuta cuando se hace click sobre el actor.
-                return true;
-            }
-
-            public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                //Se ejecuta cuando se levanta el dedo del actor, se ejecuta solo cuando el touchDown es true.
-                game.setScreen(game._scoreScreen);
-            }
-        });
-        bPreference.addListener(new InputListener() {
-            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                //Se ejecuta cuando se hace click sobre el actor.
-                return true;
-            }
-
-            public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                //Se ejecuta cuando se levanta el dedo del actor, se ejecuta solo cuando el touchDown es true.
-                game.setScreen(game._preferenceScreen);
-            }
-        });
-        bExit.addListener(new InputListener() {
-            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                //Se ejecuta cuando se hace click sobre el actor.
-                return true;
-            }
-
-            public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                //Se ejecuta cuando se levanta el dedo del actor, se ejecuta solo cuando el touchDown es true.
-                Gdx.app.exit();
-            }
-        });
     }
 
     @Override

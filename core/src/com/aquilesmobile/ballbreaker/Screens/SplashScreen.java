@@ -10,6 +10,8 @@ import static com.aquilesmobile.ballbreaker.Tools.GameLogic.load;
 
 /**
  * Created by Oliva on 12/05/2015.
+ *
+ * Pantalla Splash
  */
 public class SplashScreen extends GeneralScreen {
 
@@ -21,18 +23,13 @@ public class SplashScreen extends GeneralScreen {
     public void show() {
         super.show();
         load();
-        Image logo = new Image(getSplash());
-
-        _stage.addActor(logo);
-
+        _stage.addActor(new Image(getSplash()));
         Timer.schedule(new Timer.Task() {
             @Override
             public void run() {
                 game.setScreen(game._mainMenuScreen);
             }
         }, 3.5f);
-
-
     }
 
     @Override
