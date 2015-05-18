@@ -3,6 +3,7 @@ package com.aquilesmobile.ballbreaker.Actors;
 import com.aquilesmobile.ballbreaker.Tools.GameLogic;
 import com.aquilesmobile.ballbreaker.Tools.GeneralScreen;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
 /**
@@ -11,15 +12,17 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 public class Background extends Actor {
 
     GeneralScreen screen;
+    TextureRegion tRegion;
 
-    public Background(GeneralScreen screen) {
+    public Background(GeneralScreen screen, TextureRegion tRegion) {
         this.screen = screen;
+        this.tRegion = tRegion;
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
-        batch.draw(GameLogic.getBackground1(), 0, 0, GameLogic.getScreenWidth(), GameLogic.getScreenHeight());
+        batch.draw(tRegion, 0, 0, GameLogic.getScreenWidth(), GameLogic.getScreenHeight());
     }
 
     @Override

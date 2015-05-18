@@ -8,7 +8,7 @@ import com.badlogic.gdx.utils.Disposable;
 
 /**
  * Created by Oliva on 15/04/2015.
- *
+ * <p/>
  * Clase que contiene la logica y las texturas del juego
  */
 public abstract class GameLogic implements Disposable {
@@ -38,6 +38,12 @@ public abstract class GameLogic implements Disposable {
     private static int totalLives;
     private static double timeGame;
 
+    private static Texture imgSupBar;
+    private static Texture imgForm;
+    private static Texture imgLive;
+    private static Texture imgPause;
+    private static Texture imgPad;
+
     /**
      * Textures *
      */
@@ -56,6 +62,11 @@ public abstract class GameLogic implements Disposable {
         skin = new Skin(Gdx.files.internal("skin/uiskin.json"));
         // UI
         splash = new Texture("ui/logo.jpg");
+        imgSupBar = new Texture("ui/hud/frame.png");
+        imgForm = new Texture("ui/hud/form.png");
+        imgLive = new Texture("ui/hud/live.png");
+        imgPause = new Texture("ui/hud/pause.png");
+        imgPad = new Texture("ui/hud/control.png");
         // Textures
         titulo = new Texture("ui/title.png");
         bg1 = new Texture("ui/bg/Background01.png");
@@ -183,9 +194,40 @@ public abstract class GameLogic implements Disposable {
         return new TextureRegion(button, 0, 0, 474, 154);
     }
 
+    public static TextureRegion getImgSupBar() {
+        return new TextureRegion(imgSupBar, 1344, 204);
+    }
+
+    public static TextureRegion getImgForm() {
+        return new TextureRegion(imgForm, 0, 0, 225, 77);
+    }
+
+    public static TextureRegion getImgLive() {
+        return new TextureRegion(imgLive, 64, 56);
+    }
+
+    public static TextureRegion getImgPause() {
+        return new TextureRegion(imgPause, 124, 124);
+    }
+
+    public static TextureRegion getImgPad() {
+        return new TextureRegion(imgPad, 0, 0, 170, 170);
+    }
+
     @Override
     public void dispose() {
         skin.dispose();
         splash.dispose();
+        imgSupBar.dispose();
+        imgForm.dispose();
+        imgLive.dispose();
+        imgPause.dispose();
+        imgPad.dispose();
+
+        titulo.dispose();
+        bg1.dispose();
+        bg2.dispose();
+        bg3.dispose();
+        button.dispose();
     }
 }
